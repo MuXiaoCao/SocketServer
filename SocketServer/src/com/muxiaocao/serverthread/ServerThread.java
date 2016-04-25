@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 
+import org.json.JSONObject;
+
 import com.muxiaocao.server.MainServer;
 
 public class ServerThread implements Runnable {
@@ -27,7 +29,8 @@ public class ServerThread implements Runnable {
 		String content = null;
 		// 采用循环不断从socket中读取客户端发送过来的数据
 		while ((content = readFromClient()) != null) {
-			
+			JSONObject jsonObject = new JSONObject(content);
+			System.out.println(System.currentTimeMillis() +":"+ socket.hashCode() +jsonObject.toString());
 		}
 	}
 

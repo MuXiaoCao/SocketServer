@@ -21,6 +21,7 @@ public class MainServer {
 		while (DataUtil.VIDEOCALL_RUNNING) {
 			// 此行代码会阻塞，将一直等待客户端的连接
 			Socket s = ss.accept();
+			System.out.println("this is serversocket,socket " + s.hashCode() +  "加入");
 			socketList.add(s);
 			// 每当客户端连接后启动一条ServerThread线程为客户端服务
 			new Thread(new ServerThread(s)).start();
